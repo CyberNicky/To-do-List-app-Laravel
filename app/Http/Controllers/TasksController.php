@@ -14,7 +14,7 @@ class TasksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $tasks = Task::all();
         return view('tasks')->with('tasks', $tasks);
     }
@@ -29,11 +29,10 @@ class TasksController extends Controller
         return view('create');
     }
 
-    public function details($id){
+    public function details($id)
+    {
         $task = Task::find($id);
         return view('details')->with('task', $task);
-
-    
     }
 
     /**
@@ -47,7 +46,9 @@ class TasksController extends Controller
         try {
             $this->validate(request(), [
                 'name' => ['required'],
-                'description' => ['required']
+                'description' => ['required'],
+                'label' => ['required']
+
             ]);
         } catch (Throwable $e) {
         }
@@ -60,12 +61,13 @@ class TasksController extends Controller
         //On the left is the field name in DB and on the right is field name in Form/view
         $tasks->name = $data['name'];
         $tasks->description = $data['description'];
+        $tasks->label = $data['label'];
+
         $tasks->save();
 
         session()->flash('success', 'Tasks created succesfully');
 
         return redirect('/');
-
     }
 
     /**
@@ -89,7 +91,6 @@ class TasksController extends Controller
     {
         $task = Task::find($id);
         return view('edit')->with('task', $task);
-        
     }
 
     /**
@@ -102,8 +103,9 @@ class TasksController extends Controller
     public function update(Request $request, $id)
     {
         $task = Task::find($id);
-        $task->name= $request->name;
-        $task->description= $request->description;
+        $task->name = $request->name;
+        $task->description = $request->description;
+        $task->label = $request->label;
         $task->save();
         return view('details')->with('task', $task);
     }
@@ -118,6 +120,5 @@ class TasksController extends Controller
     {
         Task::destroy($id);
         return redirect('/');
-
     }
 }

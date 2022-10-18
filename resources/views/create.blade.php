@@ -17,8 +17,14 @@ Create Todo
         <textarea class="form-control" name="description" rows="3"></textarea>
     </div>
     <div class="form-group m-3">
+        <label for="label">Days of week</label>
+        <input type="text" class="form-control" name="label">
+    </div>
+
+    <div class="form-group m-3">
         <input type="submit" class="btn btn-primary float-end" value="Submit">
     </div>
+
 </form>
 
 @endsection

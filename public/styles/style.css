@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,
+body {
+    height: 100%;
+}
+
+main {
+    max-width: 50vw;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.btn-create {
+    width: 10%;
+    height: 40px;
+
+    margin-top: 32px;
+    padding: 8px 0;
+
+    text-align: center;
+    background-color: #ffa1cf;
+    border-radius: 4px;
+}
+
+.btn-create a {
+    text-decoration: none;
+    color: #000000;
+    width: 100%;
+}
+
+.btn-create:hover {
+    background-color: #ffd6ec;
+}
+
+footer {
+    text-align: center;
+    padding: 1px;
+    background-color: #f8c4b4;
+    color: black;
+    height: 120px;
+    margin-top: 50px;
+}
+
+.task-container {
+    display: flex;
+    justify-content: space-between;
+}
